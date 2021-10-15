@@ -1,8 +1,8 @@
 class Battlefield:
     def __init__(self):
-	    pass
+        pass
 
-    def run_battle(self):
+    def run_game(self):
         game_start = self.display_welcome()
         game_rules = self.display_rules()
         if game_start:
@@ -11,10 +11,9 @@ class Battlefield:
                 self.display_winners(self.battle())
                 play_again = input("\nDo you want to play again(Yes or No)? ")
                 
-
     def display_welcome(self):
         game_start = int(input("""
-        \nRock Paper Scissors Lizard Spock!
+        Rock Paper Scissors Lizard Spock!
         \nPress 1 to play!
         \n"""))
         if  game_start == 1:
