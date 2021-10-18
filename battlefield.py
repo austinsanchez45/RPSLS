@@ -14,7 +14,7 @@ class Battlefield:
 	    print("""\nHere are the rules to the game:\nRock crushes Scissors\nScissors cuts Paper\nPaper Covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock""")
 
     def display_welcome(self):
-        need_rules = input("Welcome to RPSLS! Do you need to go over the rules?")
+        need_rules = input("Welcome to RPSLS! Do you need to go over the rules? ")
         if need_rules == "yes":
             self.display_rules()
             self.human_or_ai()
@@ -23,27 +23,35 @@ class Battlefield:
 
             # PLAYER 1 START!!!!!!
         else: 
-            print("Please respond with 'yes' or 'no'")
+            print("Please respond with 'yes' or 'no' ")
             self.display_welcome()
 
 
-
-    def single_player_game(self):
-        print("Player 1 goes first!")
-
-    def multiplayer_game(self):
-        pass
 
 
     def human_or_ai(self):
         user_choice = input("Would you like to face off against another human or an ai(Type Human or AI)? ")
         if user_choice == "Human":
-            self.single_player_game()
-        if user_choice == "AI":
             self.multiplayer_game()
+        if user_choice == "AI":
+            self.single_player_game()
         else:
             print("That's not what I asked you to type!")
             self.human_or_ai()
+
+    def single_player_game(self):
+        while self.human_player.score < 2 and self.ai_player.score < 2:
+            self.human_player.gesture_choice()
+            print(self.human_player.gesture)
+            self.ai_player.gesture_choice()
+            print(self.ai_player.gesture)
+            if (self.human_player.gesture == "Rock" and self.ai_player.gesture == "Paper") or (self.human_player.gesture == "Rock" and self.ai_player.gesture == "Spock"):
+                self.ai_player.score += 1
+                print(f"The AI won this round! It's score is now {self.ai_player.score}")
+
+
+    def multiplayer_game(self):
+        pass
 
 
 
