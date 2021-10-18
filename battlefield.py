@@ -1,14 +1,15 @@
 from human_player import Human_player
 from ai_player import Ai_player
+from human_player_2 import Human_player_2
 
 class Battlefield:
     def __init__(self):
         self.human_player = Human_player()
         self.ai_player = Ai_player()
+        self.human_player_2 = Human_player_2()
 
     def run_game(self):
         self.display_welcome()
-
 
     def display_rules(self):
 	    print("""\nHere are the rules to the game:\nRock crushes Scissors\nScissors cuts Paper\nPaper Covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock""")
@@ -30,7 +31,7 @@ class Battlefield:
 
 
     def human_or_ai(self):
-        user_choice = input("Would you like to face off against another human or an ai(Type Human or AI)? ")
+        user_choice = input("Would you like to face off against another human or an AI (Type Human or AI)? ")
         if user_choice == "Human":
             self.multiplayer_game()
         if user_choice == "AI":
@@ -92,24 +93,71 @@ class Battlefield:
         if play_again == "Yes":
             self.single_player_game()
         else:
-            return
+            self.thanks_for_playing()
 
     def multiplayer_game(self):
-        pass
+        while self.human_player.score < 2 and self.human_player_2.score < 2:
+            self.human_player.gesture_choice()
+            print(self.human_player.gesture)
+            self.human_player_2.gesture_choice()
+            print(self.human_player_2.gesture)
+            if self.human_player.gesture == "Rock":
+                if self.human_player_2.gesture == "Paper" or self.human_player_2.gesture == "Spock":
+                    print("Player 2 won this round!")
+                    self.human_player_2.score += 1
+                else:
+                    print("Player 1 won this round!")
+                    self.human_player.score += 1
+            elif self.human_player.gesture == "Paper":
+                if self.human_player_2.gesture == "Scissors" or self.human_player_2.gesture == "Lizard":
+                    print("Player 2 won this round!")
+                    self.human_player_2.score += 1
+                else:
+                    print("Player 1 won this round!")
+                    self.human_player.score += 1
+            elif self.human_player.gesture == "Scissors":
+                if self.human_player_2.gesture == "Rock" or self.human_player_2.gesture == "Spock":
+                    print("Player 2 won this round!")
+                    self.human_player_2.score += 1
+                else:
+                    print("Player 1 won this round!")
+                    self.human_player.score += 1
+            elif self.human_player.gesture == "Lizard":
+                if self.human_player_2.gesture == "Rock" or self.human_player_2.gesture == "Scissors":
+                    print("Player 2 won this round!")
+                    self.human_player_2.score += 1
+                else:
+                    print("Player 1 won this round!")
+                    self.human_player.score += 1
+            elif self.human_player.gesture == "Spock":
+                if self.human_player_2.gesture == "Paper" or self.human_player_2.gesture == "Lizard":
+                    print("Player 2 won this round!")
+                    self.human_player_2.score += 1
+                else:
+                    print("Player 1 won this round!")
+                    self.human_player.score += 1
+        self.multiplayer_game_winner()
+
+    def multiplayer_game_winner(self):
+        if self.human_player.score == 2:
+            print("Congrats! Player 1 won the game! ")
+            self.play_again_option_mp()
+        else:
+            print("Congrats! Player 2 won the game!")
+            self.play_again_option_mp()
 
 
+    def play_again_option_mp(self):
+        self.human_player_2.score = 0
+        self.human_player.score = 0
+        play_again = input("Do you want to play again? ")
+        if play_again == "Yes":
+            self.multiplayer_game()
+        else:
+            self.thanks_for_playing()
 
-    # def player_choice(self):
-    #     player_gesture = int(input("""What do you want to play? 
-    #     \n1 = Rock
-    #     \n2 = Paper
-    #     \n3 = Scissors
-    #     \n4 = Lizard
-    #     \n5 = Spock"""))
-    #     gesture = player_gesture
-
-    # def ai_choice(self):
-    #     gestures =  ["Rock", "Paper", "Scissors", "Lizard", "Spock"]
-    #     ai_choice = random.choice(gestures)
-    #     print(ai_choice)
-    #     self.gesture = ai_choice
+    def thanks_for_playing(self):
+        print("Thanks for playing!")
+        exit()
+        
+# -------------------------------------------------------------------------------------------------------------------------
