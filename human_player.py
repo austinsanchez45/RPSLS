@@ -5,10 +5,10 @@ class Human_player(Players):
         super().__init__()
 
     def gesture_choice(self):
-        player_gesture = int(input("""What do you want to play? 
+        player_one_gesture = int(input("""What do you want to play? 
         \n1 = Rock
         \n2 = Paper
         \n3 = Scissors
         \n4 = Lizard
         \n5 = Spock"""))
-        self.gesture = player_gesture
+        self.gesture = player_one_gesture
