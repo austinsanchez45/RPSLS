@@ -1,4 +1,5 @@
 from player import Players
+import random
 
 class Ai_player:
     def __init__(self):
