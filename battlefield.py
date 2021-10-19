@@ -8,6 +8,7 @@ class Battlefield:
         self.ai_player = Ai_player()
         self.player_1 = Human_player()
         self.player_2 = Human_player()
+        self.gesture_class = Gestures(self.human_player.gesture, self.ai_player.gesture)
 
     def run_game(self):
         self.display_welcome()
@@ -43,43 +44,13 @@ class Battlefield:
             self.ai_player.gesture_choice()
             print(self.ai_player.gesture)
             if self.human_player.gesture == self.ai_player.gesture:
-                print("\nIt's a tie")
-                self.human_player.tie_counter += 1
-            elif self.human_player.gesture == "Rock":
-                if self.ai_player.gesture == "Paper" or self.ai_player.gesture == "Spock":
-                    print("\nThe AI won this round!")
-                    self.ai_player.score += 1
-                else:
-                    print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
-            elif self.human_player.gesture == "Paper":
-                if self.ai_player.gesture == "Scissors" or self.ai_player.gesture == "Lizard":
-                    print("\nThe AI won this round!")
-                    self.ai_player.score += 1
-                else:
-                    print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
-            elif self.human_player.gesture == "Scissors":
-                if self.ai_player.gesture == "Rock" or self.ai_player.gesture == "Spock":
-                    print("\nThe AI won this round!")
-                    self.ai_player.score += 1
-                else:
-                    print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
-            elif self.human_player.gesture == "Lizard":
-                if self.ai_player.gesture == "Rock" or self.ai_player.gesture == "Scissors":
-                    print("\nThe AI won this round!")
-                    self.ai_player.score += 1
-                else:
-                    print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
-            elif self.human_player.gesture == "Spock":
-                if self.ai_player.gesture == "Paper" or self.ai_player.gesture == "Lizard":
-                    print("\nThe AI won this round!")
-                    self.ai_player.score += 1
-                else:
-                    print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
+                print("This round was a tie! No points.")
+            elif self.gesture_class:
+                print("\nThe AI won this round!")
+                self.ai_player.score += 1
+            else:
+                print("\nPlayer 1 won this round!")
+                self.human_player.score += 1
         self.single_player_game_winner()
 
     def single_player_game_winner(self):
