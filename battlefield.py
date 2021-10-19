@@ -79,7 +79,7 @@ class Battlefield:
                     print("Player 1 won this round!")
                     self.human_player.score += 1
         self.single_player_game_winner()
-            
+
     def single_player_game_winner(self):
         if self.human_player.score == 2:
             print("Congrats! You won the game! ")
@@ -148,7 +148,6 @@ class Battlefield:
             print("Congrats! Player 2 won the game!")
             self.play_again_option_mp()
 
-
     def play_again_option_mp(self):
         self.human_player_2.score = 0
         self.human_player.score = 0
@@ -161,5 +160,5 @@ class Battlefield:
     def thanks_for_playing(self):
         print("Thanks for playing!")
         exit()
-        
+
 # -------------------------------------------------------------------------------------------------------------------------
