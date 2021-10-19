@@ -1,5 +1,6 @@
 from human_player import Human_player
 from ai_player import Ai_player
+from gestures import Gestures
 
 class Battlefield:
     def __init__(self):
