@@ -1,12 +1,12 @@
 from human_player import Human_player
 from ai_player import Ai_player
-from human_player_2 import Human_player_2
 
 class Battlefield:
     def __init__(self):
         self.human_player = Human_player()
         self.ai_player = Ai_player()
-        self.human_player_2 = Human_player_2()
+        self.player_1 = Human_player()
+        self.player_2 = Human_player()
 
     def run_game(self):
         self.display_welcome()
@@ -100,53 +100,53 @@ class Battlefield:
             self.thanks_for_playing()
 
     def multiplayer_game(self):
-        while self.human_player.score < 2 and self.human_player_2.score < 2:
-            self.human_player.gesture_choice()
-            print(self.human_player.gesture)
-            self.human_player_2.gesture_choice()
-            print(self.human_player_2.gesture)
-            if self.human_player.gesture == self.human_player_2.gesture:
+        while self.player_1.score < 2 and self.player_2.score < 2:
+            self.player_1.gesture_choice()
+            print(self.player_1.gesture)
+            self.player_2.gesture_choice()
+            print(self.player_2.gesture)
+            if self.player_1.gesture == self.player_2.gesture:
                 print("\nIt's a tie")
-                self.human_player.tie_counter += 1
-            elif self.human_player.gesture == "Rock":
-                if self.human_player_2.gesture == "Paper" or self.human_player_2.gesture == "Spock":
+                self.player_1.tie_counter += 1
+            elif self.player_1.gesture == "Rock":
+                if self.player_2.gesture == "Paper" or self.player_2.gesture == "Spock":
                     print("\nPlayer 2 won this round!")
-                    self.human_player_2.score += 1
+                    self.player_2.score += 1
                 else:
                     print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
-            elif self.human_player.gesture == "Paper":
-                if self.human_player_2.gesture == "Scissors" or self.human_player_2.gesture == "Lizard":
+                    self.player_1.score += 1
+            elif self.player_1.gesture == "Paper":
+                if self.player_2.gesture == "Scissors" or self.player_2.gesture == "Lizard":
                     print("\nPlayer 2 won this round!")
-                    self.human_player_2.score += 1
+                    self.player_2.score += 1
                 else:
                     print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
-            elif self.human_player.gesture == "Scissors":
-                if self.human_player_2.gesture == "Rock" or self.human_player_2.gesture == "Spock":
+                    self.player_1.score += 1
+            elif self.player_1.gesture == "Scissors":
+                if self.player_2.gesture == "Rock" or self.player_2.gesture == "Spock":
                     print("\nPlayer 2 won this round!")
-                    self.human_player_2.score += 1
+                    self.player_2.score += 1
                 else:
                     print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
-            elif self.human_player.gesture == "Lizard":
-                if self.human_player_2.gesture == "Rock" or self.human_player_2.gesture == "Scissors":
+                    self.player_1.score += 1
+            elif self.player_1.gesture == "Lizard":
+                if self.player_2.gesture == "Rock" or self.player_2.gesture == "Scissors":
                     print("\nPlayer 2 won this round!")
-                    self.human_player_2.score += 1
+                    self.player_2.score += 1
                 else:
                     print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
-            elif self.human_player.gesture == "Spock":
-                if self.human_player_2.gesture == "Paper" or self.human_player_2.gesture == "Lizard":
+                    self.player_1.score += 1
+            elif self.player_1.gesture == "Spock":
+                if self.player_2.gesture == "Paper" or self.player_2.gesture == "Lizard":
                     print("\nPlayer 2 won this round!")
-                    self.human_player_2.score += 1
+                    self.player_2.score += 1
                 else:
                     print("\nPlayer 1 won this round!")
-                    self.human_player.score += 1
+                    self.player_1.score += 1
         self.multiplayer_game_winner()
 
     def multiplayer_game_winner(self):
-        if self.human_player.score == 2:
+        if self.player_1.score == 2:
             print("\nCongrats! Player 1 won the game! ")
             self.play_again_option_mp()
         else:
@@ -155,8 +155,8 @@ class Battlefield:
 
 
     def play_again_option_mp(self):
-        self.human_player_2.score = 0
-        self.human_player.score = 0
+        self.player_2.score = 0
+        self.player_1.score = 0
         self.human_player.tie_counter = 0
         play_again = input("\nDo you want to play again? ")
         if play_again == "Yes" or play_again == "yes" or play_again == "Y" or play_again == "y":
