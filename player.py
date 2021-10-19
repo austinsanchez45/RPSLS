@@ -4,6 +4,7 @@ class Players:
         self.score = 0
         self.gesture = None
 
+
     def gesture_choice(self):
         pass
 

@@ -43,7 +43,10 @@ class Battlefield:
             print(self.human_player.gesture)
             self.ai_player.gesture_choice()
             print(self.ai_player.gesture)
-            if self.human_player.gesture == "Rock":
+            if self.human_player.gesture == self.ai_player.gesture:
+                print("It's a tie")
+                self.human_player.tie_counter += 1
+            elif self.human_player.gesture == "Rock":
                 if self.ai_player.gesture == "Paper" or self.ai_player.gesture == "Spock":
                     print("The AI won this round!")
                     self.ai_player.score += 1
@@ -91,6 +94,7 @@ class Battlefield:
     def play_again_option(self):
         self.ai_player.score = 0
         self.human_player.score = 0
+        self.human_player.tie_counter = 0
         play_again = input("Do you want to play again? ")
         if play_again == "Yes":
             self.single_player_game()
@@ -103,7 +107,10 @@ class Battlefield:
             print(self.human_player.gesture)
             self.human_player_2.gesture_choice()
             print(self.human_player_2.gesture)
-            if self.human_player.gesture == "Rock":
+            if self.human_player.gesture == self.human_player_2.gesture:
+                print("It's a tie")
+                self.human_player.tie_counter += 1
+            elif self.human_player.gesture == "Rock":
                 if self.human_player_2.gesture == "Paper" or self.human_player_2.gesture == "Spock":
                     print("Player 2 won this round!")
                     self.human_player_2.score += 1
@@ -152,6 +159,7 @@ class Battlefield:
     def play_again_option_mp(self):
         self.human_player_2.score = 0
         self.human_player.score = 0
+        self.human_player.tie_counter = 0
         play_again = input("Do you want to play again? ")
         if play_again == "Yes":
             self.multiplayer_game()

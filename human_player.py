@@ -2,6 +2,7 @@ from player import Players
 
 class Human_player(Players):
     def __init__(self):
+        self.tie_counter = 0
         super().__init__()
 
     def gesture_choice(self):
