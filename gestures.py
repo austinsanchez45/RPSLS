@@ -2,8 +2,9 @@
 
 class Gestures:
     def __init__(self, name, gesture_loses_to):
-        self.name = ""
-        self.gesture_loses_to = []
+        self.name = name
+        self.gesture_loses_to = gesture_loses_to
+        self.gesture_choices(name, gesture_loses_to)
 
 
     def gesture_choices(self, name, gesture_loses_to):
@@ -17,3 +18,4 @@ class Gestures:
             self.gesture_loses_to = ["Rock", "Scissors"]
         elif self.name == "Spock":
             self.gesture_loses_to = ["Paper", "Lizard"]
+

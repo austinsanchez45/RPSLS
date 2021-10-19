@@ -9,6 +9,7 @@ class Battlefield:
         self.player_1 = Human_player()
         self.player_2 = Human_player()
         self.gesture_class = Gestures(self.human_player.gesture, self.ai_player.gesture)
+        self.mp_gesture_class = Gestures(self.player_1.gesture, self.player_2.gesture)
 
     def run_game(self):
         self.display_welcome()
@@ -45,7 +46,7 @@ class Battlefield:
             print(self.ai_player.gesture)
             if self.human_player.gesture == self.ai_player.gesture:
                 print("This round was a tie! No points.")
-            elif self.gesture_class:
+            elif self.gesture_class == True:
                 print("\nThe AI won this round!")
                 self.ai_player.score += 1
             else:
