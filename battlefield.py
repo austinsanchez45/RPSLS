@@ -16,25 +16,23 @@ class Battlefield:
 
     def display_welcome(self):
         need_rules = input("Welcome to RPSLS! Do you need to go over the rules? ")
-        if need_rules == "yes":
+        if need_rules == "yes" or need_rules == "Yes":
             self.display_rules()
             self.human_or_ai()
-        elif need_rules == "no":
+        elif need_rules == "no" or need_rules == "No":
             self.human_or_ai()
-
-            # PLAYER 1 START!!!!!!
         else: 
             print("Please respond with 'yes' or 'no' ")
             self.display_welcome()
 
     def human_or_ai(self):
         user_choice = input("Would you like to face off against another human or an AI (Type Human or AI)? ")
-        if user_choice == "Human":
+        if user_choice == "Human" or user_choice == "human":
             self.multiplayer_game()
-        if user_choice == "AI":
+        if user_choice == "AI" or user_choice == "ai":
             self.single_player_game()
         else:
-            print("That's not what I asked you to type!")
+            print("That's not what I asked you to type! Respond with Human or AI.")
             self.human_or_ai()
 
     def single_player_game(self):
@@ -96,7 +94,7 @@ class Battlefield:
         self.human_player.score = 0
         self.human_player.tie_counter = 0
         play_again = input("Do you want to play again? ")
-        if play_again == "Yes":
+        if play_again == "Yes" or play_again == "yes" or play_again == "y" or play_again == "Y":
             self.single_player_game()
         else:
             self.thanks_for_playing()
@@ -161,7 +159,7 @@ class Battlefield:
         self.human_player.score = 0
         self.human_player.tie_counter = 0
         play_again = input("Do you want to play again? ")
-        if play_again == "Yes":
+        if play_again == "Yes" or play_again == "yes" or play_again == "Y" or play_again == "y":
             self.multiplayer_game()
         else:
             self.thanks_for_playing()
